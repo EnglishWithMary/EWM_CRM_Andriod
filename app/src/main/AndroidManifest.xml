@@ -15,6 +15,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.CreateCardActivity">
+
+        </activity>
+        <activity android:name=".activities.ArchiveActivity">
+
+        </activity>
+        <activity android:name=".activities.CheckYourselfActivity">
+
+        </activity>
     </application>
 
 </manifest>

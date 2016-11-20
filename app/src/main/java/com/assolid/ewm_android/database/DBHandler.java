@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.assolid.ewm_android.model.NewCard;
+import com.assolid.ewm_android.model.LearningCard;
 
 /**
  * Created by Данила on 13.11.2016.
@@ -57,7 +57,7 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return id;
     }
-    public void addCard(NewCard card) {
+    public void addCard(LearningCard card) {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_ENG_TEXT, card.getEngText());
@@ -68,14 +68,14 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_CARDS, null, values);
         db.close();
     }
-    public NewCard findCard(int id) {
+    public LearningCard findCard(int id) {
         String query = "Select * FROM " + TABLE_CARDS + " WHERE " + COLUMN_ID + " =  \"" + id + "\"";
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
-        NewCard card = new NewCard();
+        LearningCard card = new LearningCard();
 
         if (cursor.moveToFirst()) {
             cursor.moveToFirst();

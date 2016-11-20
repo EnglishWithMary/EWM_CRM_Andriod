@@ -1,16 +1,18 @@
 package com.assolid.ewm_android.model;
 
+import it.gmariotti.cardslib.library.internal.Card;
+
 /**
  * Created by Данила on 13.11.2016.
  */
-public class NewCard {
+public class LearningCard {
     private int id;
     private String engText;
     private String ruText;
-    public NewCard() {
+    public LearningCard() {
 
     }
-    public NewCard(int id,String engText,String ruText)
+    public LearningCard(int id, String engText, String ruText)
     {
         this.id=id;
         this.engText=engText;

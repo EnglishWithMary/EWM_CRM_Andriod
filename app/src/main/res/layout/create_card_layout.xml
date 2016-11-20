@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activities.CreateCardActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,8 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Create"
         android:id="@+id/createCardBtn"
-        android:layout_marginTop="25dp"
-        android:onClick="createNewCard"
+        android:layout_marginTop="43dp"
         android:layout_below="@+id/ruText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -43,10 +44,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ruText"
-        android:layout_below="@+id/engText"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="98dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,7 +68,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Russian text"
         android:id="@+id/textView4"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/engText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
 </RelativeLayout>
