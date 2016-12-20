@@ -22,8 +22,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Create"
-        android:id="@+id/createCardBtn"
+        android:text="Save"
+        android:id="@+id/saveCardBtn"
         android:layout_marginTop="43dp"
         android:layout_below="@+id/ruText"
         android:layout_alignParentLeft="true"

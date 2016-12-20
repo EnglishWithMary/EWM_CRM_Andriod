@@ -58,7 +58,6 @@ public class CheckYourselfActivity extends AppCompatActivity implements View.OnT
             card = dbHandler.getCard(new Random().nextInt(dbHandler.getLastId())+1);
         }catch(Exception e){
             Toast.makeText(this,"Oh! It look's like there're no saved cards",Toast.LENGTH_LONG).show();
-        }finally {
             startActivity(new Intent(this,MainActivity.class));
         }
         dbHandler.close();

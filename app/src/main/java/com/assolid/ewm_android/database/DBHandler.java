@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.StrictMode;
 import android.view.View;
+import android.widget.Toast;
 
 import com.assolid.ewm_android.models.Card;
 
@@ -55,19 +56,24 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.moveToLast();
             id = Integer.parseInt(cursor.getString(0));
             cursor.close();
-            db.close();
         }
         return id;
     }
-    public int delete(int id)
+    public void deleteCard(int id)
     {
         SQLiteDatabase db = getWritableDatabase();
-        int rnumber = db.delete(TABLE_CARDS, "id=?", new String[] {""+id});
-        db.close();
-        return rnumber;
+        Card card;
+        for(int i = id+1;i<=getLastId();i++){
+            ContentValues values = new ContentValues();
+            card = getCard(i);
+            values.put(COLUMN_ENG_TEXT, card.getEngText());
+            values.put(COLUMN_RU_TEXT, card.getRuText());
+            values.put(COLUMN_ID, i-1);
+            db.update(TABLE_CARDS, values, COLUMN_ID+"="+(i-1), null);
+        }
+        db.delete(TABLE_CARDS, COLUMN_ID+"=?", new String[] {""+getLastId()});
     }
     public void addCard(Card card) {
-
         ContentValues values = new ContentValues();
         values.put(COLUMN_ENG_TEXT, card.getEngText());
         values.put(COLUMN_RU_TEXT, card.getRuText());
@@ -75,7 +81,15 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.insert(TABLE_CARDS, null, values);
-        db.close();
+    }
+    public void replaceCard(Card card) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_ENG_TEXT, card.getEngText());
+        values.put(COLUMN_RU_TEXT, card.getRuText());
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.update(TABLE_CARDS, values, COLUMN_ID+"="+card.getId(), null);
     }
     public Card getCard(int id) {
         String query = "Select * FROM " + TABLE_CARDS + " WHERE " + COLUMN_ID + " =  \"" + id + "\"";
@@ -95,7 +109,6 @@ public class DBHandler extends SQLiteOpenHelper {
         } else {
             card = null;
         }
-        db.close();
         return card;
     }
 }
